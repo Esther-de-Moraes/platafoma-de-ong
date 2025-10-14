@@ -13,28 +13,34 @@
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">N</div>
-                    NexusONG
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">Início</a></li>
-                    <li><a href="projetos.html" class="nav-link">Projetos</a></li>
-                    <li><a href="#features" class="nav-link">Funcionalidades</a></li>
-                    <li><a href="#personas" class="nav-link">Para Quem</a></li>
-                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <a href="login.html" class="btn btn-outline">Entrar</a>
-                    <a href="cadastro.html" class="btn btn-primary">Começar Agora</a>
-                    <button class="mobile-menu-btn">
-                        <i class="fas fa-bars"></i>
-                    </button>
+            <nav class="navbar" data-component="navigation">
+            <a href="/" class="logo" data-route="home">
+                <div class="logo-icon">N</div>
+                NexusONG
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-route="home">Início</a></li>
+                <li><a href="projetos.html" class="nav-link" data-route="projects">Projetos</a></li>
+                <li><a href="index.html#features" class="nav-link">Funcionalidades</a></li>
+                <li><a href="cadastro.html" class="nav-link" data-route="registration">Cadastrar</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div data-auth="false">
+                <a href="login.html" class="btn btn-outline">Entrar</a>
+                <a href="cadastro.html" class="btn btn-primary">Começar Agora</a>
                 </div>
+                <div data-auth="true" style="display: none;">
+                <div data-component="user-profile"></div>
+                </div>
+                <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+                </button>
+            </div>
             </nav>
+        </div>
         </div>
     </header>
 
