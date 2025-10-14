@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastre-se na NexusONG e comece a fazer a diferença">
+    <title>Cadastro - NexusONG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">N</div>
+                    NexusONG
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="projetos.html" class="nav-link">Projetos</a></li>
+                    <li><a href="index.html#features" class="nav-link">Funcionalidades</a></li>
+                    <li><a href="index.html#personas" class="nav-link">Para Quem</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-outline">Entrar</a>
+                    <a href="cadastro.html" class="btn btn-primary active">Cadastrar</a>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="registration-page">
+        <div class="container">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h1>Junte-se à Nossa Comunidade</h1>
+                    <p>Escolha como você quer fazer a diferença</p>
+                </div>
+
+                <!-- Persona Selection -->
+                <div class="persona-selection">
+                    <div class="persona-option" data-persona="admin">
+                        <div class="persona-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Administrador</h3>
+                        <p>Gerencio uma ONG e quero usar a plataforma para gerenciar projetos e equipes</p>
+                    </div>
+                    
+                    <div class="persona-option" data-persona="volunteer">
+                        <div class="persona-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Voluntário</h3>
+                        <p>Quero encontrar oportunidades de voluntariado e me engajar em causas sociais</p>
+                    </div>
+                    
+                    <div class="persona-option" data-persona="donor">
+                        <div class="persona-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Doador</h3>
+                        <p>Desejo apoiar financeiramente projetos sociais com transparência e segurança</p>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form class="registration-form" id="registrationForm">
+                    <div class="form-section active" id="personal-info">
+                        <h3>Informações Pessoais</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Nome Completo *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cpf">CPF *</label>
+                                <input type="text" id="cpf" name="cpf" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate">Data de Nascimento *</label>
+                                <input type="date" id="birthDate" name="birthDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="nextStep('organization-info')">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="organization-info">
+                        <h3>Informações da Organização</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="orgName">Nome da ONG *</label>
+                                <input type="text" id="orgName" name="orgName">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" id="cnpj" name="cnpj">
+                            </div>
+                            <div class="form-group">
+                                <label for="orgType">Tipo de Organização</label>
+                                <select id="orgType" name="orgType">
+                                    <option value="">Selecione...</option>
+                                    <option value="oscip">OSCIP</option>
+                                    <option value="ong">ONG</option>
+                                    <option value="instituto">Instituto</option>
+                                    <option value="fundacao">Fundação</option>
+                                    <option value="associacao">Associação</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="prevStep('personal-info')">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep('address-info')">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="address-info">
+                        <h3>Endereço</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cep">CEP *</label>
+                                <input type="text" id="cep" name="cep" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="street">Logradouro *</label>
+                                <input type="text" id="street" name="street" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="number">Número *</label>
+                                <input type="text" id="number" name="number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="complement">Complemento</label>
+                                <input type="text" id="complement" name="complement">
+                            </div>
+                            <div class="form-group">
+                                <label for="neighborhood">Bairro *</label>
+                                <input type="text" id="neighborhood" name="neighborhood" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Cidade *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">Estado *</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <!-- Outros estados -->
+                                    <option value="SP">São Paulo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="prevStep('organization-info')">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep('account-info')">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="account-info">
+                        <h3>Configuração da Conta</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Senha *</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirmar Senha *</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a> *
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Desejo receber novidades e oportunidades por e-mail
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="prevStep('address-info')">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check"></i>
+                                Finalizar Cadastro
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">N</div>
+                        NexusONG
+                    </a>
+                    <p class="footer-description">
+                        Conectando tecnologia e propósito para criar um impacto social mensurável e sustentável.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">Plataforma</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#features">Funcionalidades</a></li>
+                        <li><a href="projetos.html">Projetos</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="index.html#personas">Para Quem</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Parceiros</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 NexusONG. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>
