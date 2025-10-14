@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard NexusONG - Gerencie sua ONG de forma inteligente">
+    <title>Dashboard - NexusONG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">N</div>
+                NexusONG
+            </a>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h4>Principal</h4>
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="nav-item active">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Visão Geral</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="projetos.html" class="nav-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Projetos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Voluntários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="fas fa-donate"></i>
+                            <span>Doações</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h4>Gestão</h4>
+                <ul>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="fas fa-users"></i>
+                            <span>Equipe</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Financeiro</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Usuário">
+                </div>
+                <div class="user-info">
+                    <strong>João Silva</strong>
+                    <span>Admin - ONG Esperança</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Visão Geral</h1>
+                <p>Bem-vindo de volta, João! Aqui está o resumo da sua ONG.</p>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Novo Projeto
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon primary">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>12</h3>
+                    <p>Projetos Ativos</p>
+                </div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>15%</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon success">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>245</h3>
+                    <p>Voluntários</p>
+                </div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>8%</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon warning">
+                    <i class="fas fa-donate"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>R$ 156.7K</h3>
+                    <p>Arrecadado</p>
+                </div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>23%</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon info">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>5.2K</h3>
+                    <p>Pessoas Impactadas</p>
+                </div>
+                <div class="stat-trend up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>12%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-row">
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3>Arrecadação Mensal</h3>
+                        <select class="chart-filter">
+                            <option>Últimos 6 meses</option>
+                            <option>Último ano</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Distribuição de Projetos</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="projectsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Engajamento de Voluntários</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="volunteersChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3>Metas do Trimestre</h3>
+                    </div>
+                    <div class="goals-container">
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Captação de Recursos</h4>
+                                <span>R$ 75.000 / R$ 100.000</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Novos Voluntários</h4>
+                                <span>45 / 100</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                                <span>45%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Projetos Concluídos</h4>
+                                <span>3 / 5</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span>60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="activity-section">
+            <div class="activity-card">
+                <div class="activity-header">
+                    <h3>Atividade Recente</h3>
+                    <a href="#" class="btn-link">Ver Tudo</a>
+                </div>
+                
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon success">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>Nova doação</strong> recebida de Maria Santos</p>
+                            <span>R$ 500,00 - Projeto Educação para Todos</span>
+                            <small>Há 2 horas</small>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon primary">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>Novo voluntário</strong> cadastrado</p>
+                            <span>Carlos Oliveira - Designer Gráfico</span>
+                            <small>Há 4 horas</small>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon warning">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>Projeto atualizado</strong></p>
+                            <span>Alimentação Solidária - Fase 2 iniciada</span>
+                            <small>Há 1 dia</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
