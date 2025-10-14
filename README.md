@@ -1,2 +1,5 @@
-# platafoma-de-ong
-platafoma de ong
+# plataforma-de-ong
+plataforma de ongs 
+
+projeto da faculdade para ongs não govertamentais: 
+tecnologia usadas são javascript ,html e css
