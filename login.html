@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login - NexusONG - Acesse sua conta e continue fazendo a diferença">
+    <title>Login - NexusONG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Lado Esquerdo - Ilustração e Informações -->
+        <section class="login-hero">
+            <div class="hero-content fade-in-up">
+                <div class="hero-logo floating">
+                    <div class="logo-icon">N</div>
+                    <span>NexusONG</span>
+                </div>
+                
+                <h1>Faça Login e Continue Transformando Vidas</h1>
+                <p>Acesse sua conta para gerenciar projetos, conectar-se com voluntários e acompanhar o impacto da sua organização.</p>
+                
+                <div class="hero-features">
+                    <div class="feature-item fade-in-up">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Gestão Completa</h4>
+                            <p>Gerencie todos os seus projetos em um só lugar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item fade-in-up">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Voluntários Engajados</h4>
+                            <p>Conecte-se com milhares de pessoas dispostas a ajudar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item fade-in-up">
+                        <div class="feature-icon">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Recursos Transparentes</h4>
+                            <p>Acompanhe cada doação e seu impacto real</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item fade-in-up">
+                        <div class="feature-icon">
+                            <i class="fas fa-analytics"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Métricas em Tempo Real</h4>
+                            <p>Visualize o progresso dos seus projetos instantaneamente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lado Direito - Formulário de Login -->
+        <section class="login-form-section">
+            <div class="form-container fade-in-up">
+                <div class="form-header">
+                    <h2>Bem-vindo de Volta</h2>
+                    <p>Entre na sua conta para continuar sua jornada de impacto social</p>
+                </div>
+
+                <!-- Seletor de Persona -->
+                <div class="persona-selection">
+                    <label class="form-label">Como você atua?</label>
+                    <div class="persona-options">
+                        <div class="persona-option active" data-persona="admin">
+                            <div class="persona-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="persona-name">Administrador</div>
+                        </div>
+                        <div class="persona-option" data-persona="volunteer">
+                            <div class="persona-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="persona-name">Voluntário</div>
+                        </div>
+                        <div class="persona-option" data-persona="donor">
+                            <div class="persona-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="persona-name">Doador</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <div id="alertContainer"></div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-mail</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Senha</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="password" class="form-input" placeholder="Sua senha" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Lembrar-me</span>
+                        </label>
+                        <a href="#forgot-password" class="forgot-password">Esqueci minha senha</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="loginButton">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Entrar na Plataforma
+                    </button>
+
+                    <div class="divider">
+                        <span>ou continue com</span>
+                    </div>
+
+                    <div class="social-login">
+                        <a href="#" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+
+                    <div class="form-footer">
+                        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se agora</a></p>
+                        <p><a href="index.html">← Voltar para a página inicial</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
