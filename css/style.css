@@ -168,7 +168,7 @@ header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -675,3 +675,5 @@ footer {
 .mt-4 {
     margin-top: 2rem;
 }
+/* Login Page Layout */
+
