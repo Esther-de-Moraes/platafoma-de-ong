@@ -420,6 +420,64 @@
     width: 20px;
     text-align: center;
 }
+/* Mobile Navigation Icons */
+.nav-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Ajustes específicos para mobile */
+@media (max-width: 768px) {
+    .nav-link.btn {
+        border: 2px solid var(--primary);
+        border-radius: var(--border-radius);
+        margin: 0.5rem 0;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .nav-link.btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+    }
+
+    .nav-link.btn-outline {
+        background: transparent;
+        color: var(--primary);
+    }
+
+    /* Badge para itens novos */
+    .nav-badge {
+        background: var(--secondary);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        margin-left: auto;
+    }
+}
+
+/* Loading state para mobile */
+.nav-menu.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.nav-menu.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--gray-light);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
 .sidebar-footer {
     padding: 1.5rem 2rem;
