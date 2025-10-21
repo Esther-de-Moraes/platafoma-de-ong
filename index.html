@@ -11,38 +11,71 @@
 </head>
 <body>
     <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar" data-component="navigation">
-            <a href="/" class="logo" data-route="home">
+<!-- Atualize a seção de navegação no header -->
+<header id="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">N</div>
                 NexusONG
             </a>
             
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link" data-route="home">Início</a></li>
-                <li><a href="projetos.html" class="nav-link" data-route="projects">Projetos</a></li>
-                <li><a href="index.html#features" class="nav-link">Funcionalidades</a></li>
-                <li><a href="cadastro.html" class="nav-link" data-route="registration">Cadastrar</a></li>
-                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active" data-route="home">
+                        <i class="fas fa-home"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="projetos.html" class="nav-link" data-route="projects">
+                        <i class="fas fa-project-diagram"></i>
+                        Projetos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link" data-route="features">
+                        <i class="fas fa-star"></i>
+                        Funcionalidades
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#personas" class="nav-link" data-route="personas">
+                        <i class="fas fa-users"></i>
+                        Para Quem
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link" data-route="dashboard">
+                        <i class="fas fa-chart-pie"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro.html" class="nav-link btn btn-outline">
+                        <i class="fas fa-user-plus"></i>
+                        Cadastre-se
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Entrar
+                    </a>
+                </li>
             </ul>
             
             <div class="nav-actions">
-                <div data-auth="false">
-                <a href="login.html" class="btn btn-outline">Entrar</a>
-                <a href="cadastro.html" class="btn btn-primary">Começar Agora</a>
-                </div>
-                <div data-auth="true" style="display: none;">
-                <div data-component="user-profile"></div>
-                </div>
-                <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+                <button class="mobile-menu-btn" aria-label="Menu de navegação">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </button>
             </div>
-            </nav>
-        </div>
-        </div>
-    </header>
+        </nav>
+    </div>
+</header>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -309,5 +342,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mobile-nav.js"></script>
 </body>
 </html>
