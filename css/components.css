@@ -409,7 +409,7 @@
     border-left: 3px solid transparent;
 }
 
-.nav-item:hover,
+
 .nav-item.active {
     background: var(--primary-light);
     color: var(--primary);
