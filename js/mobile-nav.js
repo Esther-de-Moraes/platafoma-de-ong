@@ -1,4 +1,4 @@
-// Mobile Navigation System
+// Mobile Navigation System - CORRIGIDO
 class MobileNavigation {
     constructor() {
         this.menuBtn = document.querySelector('.mobile-menu-btn');
@@ -12,27 +12,43 @@ class MobileNavigation {
         this.setupEventListeners();
         this.setupAccessibility();
         this.handleResize();
+        
+        // Garantir que o menu comece fechado
+        this.closeMenu();
     }
 
     setupEventListeners() {
-        // Toggle do menu mobile
-        this.menuBtn.addEventListener('click', () => {
-            this.toggleMenu();
-        });
+        // Toggle do menu mobile - CORRIGIDO
+        if (this.menuBtn) {
+            this.menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMenu();
+            });
+        }
 
-        // Fechar menu ao clicar em links
+        // Fechar menu ao clicar em links - CORRIGIDO
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                this.closeMenu();
+            link.addEventListener('click', (e) => {
+                // Permitir que os links funcionem normalmente
+                if (link.getAttribute('href') && link.getAttribute('href') !== '#') {
+                    setTimeout(() => {
+                        this.closeMenu();
+                    }, 300);
+                } else {
+                    e.preventDefault();
+                    this.closeMenu();
+                }
             });
         });
 
-        // Fechar menu ao clicar no overlay
-        this.navOverlay.addEventListener('click', () => {
-            this.closeMenu();
-        });
+        // Fechar menu ao clicar no overlay - CORRIGIDO
+        if (this.navOverlay) {
+            this.navOverlay.addEventListener('click', () => {
+                this.closeMenu();
+            });
+        }
 
-        // Fechar menu com ESC
+        // Fechar menu com ESC - CORRIGIDO
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.closeMenu();
@@ -49,10 +65,17 @@ class MobileNavigation {
     }
 
     setupAccessibility() {
-        // ARIA attributes
-        this.menuBtn.setAttribute('aria-expanded', 'false');
-        this.menuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
-        this.navMenu.setAttribute('aria-hidden', 'true');
+        // ARIA attributes - CORRIGIDO
+        if (this.menuBtn) {
+            this.menuBtn.setAttribute('aria-expanded', 'false');
+            this.menuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
+            this.menuBtn.setAttribute('aria-controls', 'nav-menu');
+        }
+        
+        if (this.navMenu) {
+            this.navMenu.setAttribute('aria-hidden', 'true');
+            this.navMenu.id = 'nav-menu';
+        }
     }
 
     createOverlay() {
@@ -71,12 +94,17 @@ class MobileNavigation {
     }
 
     openMenu() {
+        if (!this.navMenu || !this.menuBtn || !this.navOverlay) return;
+        
         this.isOpen = true;
         
-        // Ativar elementos visuais
+        // Ativar elementos visuais - CORRIGIDO
         this.menuBtn.classList.add('active');
         this.navMenu.classList.add('active');
         this.navOverlay.classList.add('active');
+        
+        // Mostrar o menu
+        this.navMenu.style.display = 'flex';
         
         // Atualizar acessibilidade
         this.menuBtn.setAttribute('aria-expanded', 'true');
@@ -87,12 +115,16 @@ class MobileNavigation {
         
         // Disparar evento customizado
         this.dispatchEvent('mobileMenuOpen');
+        
+        console.log('Menu mobile aberto');
     }
 
     closeMenu() {
+        if (!this.navMenu || !this.menuBtn || !this.navOverlay) return;
+        
         this.isOpen = false;
         
-        // Desativar elementos visuais
+        // Desativar elementos visuais - CORRIGIDO
         this.menuBtn.classList.remove('active');
         this.navMenu.classList.remove('active');
         this.navOverlay.classList.remove('active');
@@ -106,9 +138,13 @@ class MobileNavigation {
         
         // Disparar evento customizado
         this.dispatchEvent('mobileMenuClose');
+        
+        console.log('Menu mobile fechado');
     }
 
     trapFocus() {
+        if (!this.navMenu) return;
+        
         // Encontrar todos os elementos focáveis no menu
         const focusableElements = this.navMenu.querySelectorAll(
             'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -119,11 +155,14 @@ class MobileNavigation {
             this.lastFocusableElement = focusableElements[focusableElements.length - 1];
             
             // Adicionar event listener para trap de foco
-            this.navMenu.addEventListener('keydown', this.handleTabKey.bind(this));
+            this.boundHandleTabKey = this.handleTabKey.bind(this);
+            this.navMenu.addEventListener('keydown', this.boundHandleTabKey);
             
             // Focar no primeiro elemento
             setTimeout(() => {
-                this.firstFocusableElement.focus();
+                if (this.firstFocusableElement) {
+                    this.firstFocusableElement.focus();
+                }
             }, 100);
         }
     }
@@ -148,10 +187,14 @@ class MobileNavigation {
 
     releaseFocus() {
         // Remover event listener de trap de foco
-        this.navMenu.removeEventListener('keydown', this.handleTabKey.bind(this));
+        if (this.boundHandleTabKey) {
+            this.navMenu.removeEventListener('keydown', this.boundHandleTabKey);
+        }
         
         // Retornar foco para o botão do menu
-        this.menuBtn.focus();
+        if (this.menuBtn) {
+            this.menuBtn.focus();
+        }
     }
 
     preventBodyScroll() {
@@ -161,14 +204,18 @@ class MobileNavigation {
                 if (mutation.attributeName === 'class') {
                     if (this.navMenu.classList.contains('active')) {
                         document.body.style.overflow = 'hidden';
+                        document.documentElement.style.overflow = 'hidden';
                     } else {
                         document.body.style.overflow = '';
+                        document.documentElement.style.overflow = '';
                     }
                 }
             });
         });
 
-        observer.observe(this.navMenu, { attributes: true });
+        if (this.navMenu) {
+            observer.observe(this.navMenu, { attributes: true });
+        }
     }
 
     handleResize() {
@@ -196,75 +243,53 @@ class MobileNavigation {
 
     // Destruir instância (para SPA)
     destroy() {
-        this.menuBtn.removeEventListener('click', this.toggleMenu);
-        this.navOverlay.remove();
-        document.removeEventListener('keydown', this.handleKeydown);
+        if (this.menuBtn) {
+            this.menuBtn.removeEventListener('click', this.toggleMenu);
+        }
+        if (this.navOverlay) {
+            this.navOverlay.remove();
+        }
     }
 }
 
-// Enhanced Touch Handling
-class TouchNavigation {
-    constructor() {
-        this.startX = 0;
-        this.currentX = 0;
-        this.isSwiping = false;
-        this.init();
+// Inicialização CORRIGIDA
+function initMobileNavigation() {
+    // Verificar se estamos em mobile
+    if (window.innerWidth <= 768) {
+        const mobileNav = new MobileNavigation();
+        window.mobileNav = mobileNav;
+        
+        // Adicionar ao escopo global para debug
+        console.log('Mobile Navigation inicializado');
+        
+        return mobileNav;
     }
-
-    init() {
-        this.setupTouchEvents();
-    }
-
-    setupTouchEvents() {
-        // Swipe para abrir/fechar menu
-        document.addEventListener('touchstart', (e) => {
-            this.startX = e.touches[0].clientX;
-            this.isSwiping = true;
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!this.isSwiping) return;
-            
-            this.currentX = e.touches[0].clientX;
-            const diff = this.startX - this.currentX;
-
-            // Swipe da direita para esquerda para abrir menu
-            if (diff > 50 && this.startX < 50) {
-                mobileNav.open();
-                this.isSwiping = false;
-            }
-            
-            // Swipe da esquerda para direita para fechar menu
-            if (diff < -50 && mobileNav.isOpen) {
-                mobileNav.close();
-                this.isSwiping = false;
-            }
-        });
-
-        document.addEventListener('touchend', () => {
-            this.isSwiping = false;
-        });
-    }
+    return null;
 }
 
-// Inicialização
-let mobileNav;
+// Inicializar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    // Pequeno delay para garantir que tudo carregou
+    setTimeout(() => {
+        window.mobileNavInstance = initMobileNavigation();
+    }, 100);
+});
 
-document.addEventListener('DOMContentLoaded', () => {
-    mobileNav = new MobileNavigation();
-    
-    // Inicializar touch navigation apenas em dispositivos touch
-    if ('ontouchstart' in window) {
-        new TouchNavigation();
+// Re-inicializar quando a janela for redimensionada
+window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768 && !window.mobileNavInstance) {
+        window.mobileNavInstance = initMobileNavigation();
+    } else if (window.innerWidth > 768 && window.mobileNavInstance) {
+        window.mobileNavInstance.close();
+        window.mobileNavInstance = null;
     }
 });
 
-// Export para uso global
-window.MobileNavigation = MobileNavigation;
-
-// Utilitários para outras partes da aplicação
-window.mobileNavUtils = {
-    openMenu: () => mobileNav?.open(),
-    closeMenu: () => mobileNav?.close(),
-    isMenuOpen: () => mobileNav?.isOpen || false
+// Debug helper
+window.debugMobileNav = function() {
+    console.log('Mobile Nav Debug:');
+    console.log('Menu Button:', document.querySelector('.mobile-menu-btn'));
+    console.log('Nav Menu:', document.querySelector('.nav-menu'));
+    console.log('Instance:', window.mobileNavInstance);
+    console.log('Is Open:', window.mobileNavInstance?.isOpen);
 };
