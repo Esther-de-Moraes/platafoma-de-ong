@@ -402,8 +402,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem 2rem;
-    color: var(--gray);
+    padding: 0.75rem 1rem;
+    color: black;
     text-decoration: none;
     transition: var(--transition);
     border-left: 3px solid transparent;
@@ -520,7 +520,7 @@
 
 .dashboard-main {
     flex: 1;
-    margin-left: 280px;
+    margin-left: 80px;
     padding: 2rem;
 }
 
