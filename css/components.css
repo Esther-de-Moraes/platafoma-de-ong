@@ -4,8 +4,8 @@
 }
 
 .page-hero {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background: linear-gradient(135deg, #142d66 0%, #364460 100%);
+    color: black;
     padding: 6rem 0 4rem;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .page-hero-content h1 {
-    color: white;
+    color: black;
     margin-bottom: 1rem;
 }
 
@@ -50,6 +50,8 @@
     gap: 0.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
+    font-weight: bold;
 }
 
 .filter-tag {
