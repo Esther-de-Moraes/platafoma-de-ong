@@ -84,7 +84,6 @@
         gap: 1rem;
     }
     
-    
     /* Dashboard Mobile */
     .dashboard-page {
         flex-direction: column;
@@ -252,9 +251,9 @@
         margin-left: 0;
     }
 }
-/* Mobile Navigation Styles - CORRIGIDO */
+/* Mobile Navigation Styles - CORRIGIDO Z-INDEX */
 @media (max-width: 768px) {
-    /* Header Mobile */
+    /* Header Mobile - CORRIGIDO */
     .mobile-menu-btn {
         display: flex !important;
         flex-direction: column;
@@ -264,11 +263,12 @@
         border-radius: var(--border-radius);
         padding: 8px;
         cursor: pointer;
-        z-index: 1001;
+        z-index: 1002; /* Aumentado */
         width: 44px;
         height: 44px;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 
     .mobile-menu-btn .bar {
@@ -293,7 +293,7 @@
         background-color: var(--primary);
     }
 
-    /* Navigation Menu Mobile - CORRIGIDO */
+    /* Navigation Menu Mobile - CORRIGIDO Z-INDEX */
     .nav-menu {
         position: fixed;
         top: 0;
@@ -306,15 +306,21 @@
         justify-content: flex-start;
         align-items: stretch;
         padding: 80px 1.5rem 2rem;
-        transition: var(--transition-slow);
-        box-shadow: var(--shadow-xl);
-        z-index: 1000;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+        z-index: 1001; /* Aumentado */
         overflow-y: auto;
         margin: 0;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(-20px);
     }
 
     .nav-menu.active {
         left: 0;
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
     }
 
     .nav-menu::before {
@@ -325,6 +331,7 @@
         right: 0;
         height: 60px;
         background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        z-index: -1;
     }
 
     .nav-item {
@@ -332,14 +339,24 @@
         width: 100%;
         border-bottom: 1px solid var(--gray-light);
         list-style: none;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.3s ease;
     }
 
-    .nav-item:last-child {
-        border-bottom: none;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 2px solid var(--gray-light);
+    .nav-menu.active .nav-item {
+        opacity: 1;
+        transform: translateX(0);
     }
+
+    /* Animações sequenciais para os itens */
+    .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.35s; }
+    .nav-menu.active .nav-item:nth-child(7) { transition-delay: 0.4s; }
 
     .nav-link {
         display: flex;
@@ -351,10 +368,13 @@
         color: var(--dark);
         text-decoration: none;
         transition: var(--transition);
+        position: relative;
+        z-index: 1;
     }
 
     .nav-link:hover {
         color: var(--primary);
+        transform: translateX(5px);
     }
 
     .nav-link::after {
@@ -368,6 +388,7 @@
         margin: 0 -1rem;
         padding: 1rem;
         border-radius: var(--border-radius);
+        transform: translateX(0);
     }
 
     /* Links que são botões */
@@ -378,6 +399,7 @@
         border: 2px solid;
         border-radius: var(--border-radius);
         font-weight: 600;
+        text-align: center;
     }
 
     .nav-link.btn-outline {
@@ -386,10 +408,21 @@
         background: transparent;
     }
 
+    .nav-link.btn-outline:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+    }
+
     .nav-link.btn-primary {
         border-color: var(--primary);
         background: var(--gradient-primary);
         color: white;
+    }
+
+    .nav-link.btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
     }
 
     /* Nav Actions Mobile */
@@ -399,18 +432,19 @@
         gap: 0.5rem;
     }
 
-    /* Overlay para mobile - CORRIGIDO */
+    /* Overlay para mobile - CORRIGIDO Z-INDEX */
     .nav-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000; /* Abaixo do menu, acima de tudo */
         opacity: 0;
         visibility: hidden;
-        transition: var(--transition);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(2px);
     }
 
     .nav-overlay.active {
@@ -422,6 +456,9 @@
     header {
         padding: 0;
         background: white;
+        position: relative;
+        z-index: 1003; /* Header acima do overlay */
+        box-shadow: var(--shadow-md);
     }
 
     .navbar {
@@ -430,11 +467,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        z-index: 1003;
     }
 
     .logo {
         font-size: 1.4rem;
-        z-index: 1001;
+        z-index: 1004; /* Logo acima de tudo */
+        position: relative;
     }
 
     .logo-icon {
@@ -443,13 +482,25 @@
         font-size: 0.9rem;
     }
 
-    /* Garantir que o menu esteja escondido por padrão */
-    .nav-menu:not(.active) {
-        display: none;
+    /* Garantir que o conteúdo principal fique atrás */
+    main, .hero, .features, .personas, .cta, footer {
+        position: relative;
+        z-index: 1;
     }
 
-    .nav-menu.active {
-        display: flex;
+    /* Quando o menu está aberto, escurecer o conteúdo */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    body.menu-open main,
+    body.menu-open .hero,
+    body.menu-open .features,
+    body.menu-open .personas,
+    body.menu-open .cta,
+    body.menu-open footer {
+        filter: brightness(0.7);
+        transition: filter 0.3s ease;
     }
 }
 
@@ -460,7 +511,7 @@
     }
 
     .nav-menu {
-        width: 100%;
+        width: 90%;
         max-width: none;
         padding: 80px 1rem 1rem;
     }
@@ -494,17 +545,50 @@
         text-align: center;
         font-size: 1.1rem;
     }
+}
 
-    /* Animações suaves para mobile */
+/* Suporte para dispositivos com notch */
+@supports (padding: max(0px)) {
     .nav-menu {
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .nav-menu.active {
-        transform: translateX(0);
+        padding-top: max(80px, env(safe-area-inset-top));
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
     }
 }
 
+/* Dark mode support para mobile */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .nav-menu {
+        background: var(--dark);
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .nav-link.active {
+        color: var(--primary-light);
+        background: rgba(37, 99, 235, 0.2);
+    }
+}
+
+/* Orientação landscape para mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .nav-menu {
+        padding-top: 70px;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .nav-item {
+        padding: 0.5rem 0;
+    }
+
+    .nav-link {
+        padding: 0.75rem 0;
+    }
+}
 /* Melhorias de acessibilidade para mobile */
 @media (max-width: 768px) {
     .nav-link:focus {
